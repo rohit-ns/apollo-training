@@ -54,3 +54,43 @@ The most basic components of a GraphQL schema are object types, which just repre
 ### Resolver
 Resolver is a collection of functions that generate response for a GraphQL query. In simple terms, a resolver acts as a GraphQL query handler. Every resolver function in a GraphQL schema accepts four positional arguments as given below −
 >fieldName:(root, args, context, info) => { result }
+1. Query Type-
+
+A GraphQL query is for fetching data and compares to the GET verb in REST-based APIs.
+In order to define what queries are possible on a server, the Query type is used within the SDL. The Query type is one of many root-level types which defines functionality (it doesn't actually trigger a query) for clients and acts as an entry-point to other more specific types within the schema.
+
+			Ex:type Query {
+			 getBooks: [Book]
+			 getAuthors: [Author]
+			}
+
+
+2. Mutation type-
+
+Mutations are operations sent to the server to create, update or delete data. These are comparable to the PUT, POST, PATCH and DELETE verbs on REST-based APIs.
+Much like how the Query type defines the entry-points for data-fetching operations on a GraphQL server, the root-level Mutation type specifies the entry points for data-manipulation operations
+
+
+3. Subscription type-
+
+Adding GraphQL subscriptions to your GraphQL schema is simple, since Subscription is just another GraphQL operation type like Query and Mutation.
+
+You specify operation type, then the operation name and you can customize the publication data with a selection set and arguments.
+
+You need to create a root schema definition and a root resolver for your  Subscription root, just like with Query and Mutation
+
+			Ex:type Comment {
+			 id: String
+			 content: String
+			}
+
+			type Subscription {
+			 commentAdded(repoFullName: String!): Comment
+			}
+
+			schema {
+			 query: Query
+			 mutation: Mutation
+			 subscription: Subscription
+			}
+Create a resolver just like queries and mutations, but instead of function, pass an Object with subscribe field and a subscription resolver method.
