@@ -1,0 +1,10 @@
+# type traineeQuery {
+#     getTrainee: TraineeResponse
+# }
+# type userQuery {
+#     me:user
+# }
+type Query {
+    Trainee: [Trainee!]!
+    me:user!
+}

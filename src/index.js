@@ -1,6 +1,14 @@
 // import Server from 'server';
 // const server= new Server();
-import { config } from './config';
-import Server from './server';
-// console.log('configuration is', config);
-const server = new Server();
+// import path from 'path';
+// import { fileLoader, mergeTypes } from 'merge-graphql-schemas';
+// const typesArray = fileLoader(path.join(__dirname, './**/*.graphql'));
+// console.log(typesArray);
+// const typeDefs = mergeTypes(typesArray, { all: true });
+// // console.log(typeDefs);
+// export default typeDefs;
+import path from 'path';
+import { fileLoader, mergeTypes } from 'merge-graphql-schemas';
+const typesArray = fileLoader(path.join(__dirname, './**/*.graphql'));
+const typeDefs = mergeTypes(typesArray, { all: true });
+export default typeDefs;

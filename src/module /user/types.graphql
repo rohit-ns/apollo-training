@@ -1,0 +1,23 @@
+type user {
+   name : String!
+}
+# type UserData {
+#     _id:String
+#     name:String
+#     role:String
+#     email:String
+#     originalId:String
+#     createdBy:String
+# }
+# type User {
+#     id:ID
+#     name:String
+#     email:String
+#     password:String
+# }
+# type LoginResponse {
+#     id:ID
+#     name:String
+#     email:String
+#     password:Sring
+# }
