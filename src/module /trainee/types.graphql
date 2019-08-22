@@ -1,0 +1,18 @@
+type Trainee{
+     name:String!
+     email:String!
+}
+# type gettrainee {
+#     id:ID
+#     name:String
+#     email:String
+#     password:String
+# }
+# type Updatetrainee {
+#     _id:String
+#     name:String
+#     email:String
+#     role:String
+#     originalId:String
+#     createdBy:String
+# }

@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\"",
     "start:extraTs": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
     "start": "tsc-watch --project . --onSuccess \"npm run nodemon\"",
-    "nodemon": "nodemon ./dist/index.js",
+    "nodemon": "nodemon ./src/index.js",
+    "chalu":" nodemon --exec babel-node src/server.js",
     "lint": "./node_modules/tslint/bin/tslint -c tslint.json -p tsconfig.json --exclude 'node_modules/**/*.{j,t}s'",
     "lint:fix": "npm run lint --fix"
   },
@@ -22,18 +23,25 @@
   },
   "homepage": "https://github.com/rohit-ns/apollo-training#readme",
   "dependencies": {
+    "@babel/cli": "^7.5.5",
     "apollo-server-express": "^2.8.1",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
-    "graphql": "^14.4.2"
+    "graphql": "^14.4.2",
+    "merge-graphql-schemas": "^1.7.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/node": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
+    "babel-eslint": "^10.0.2",
+    "eslint": "^6.2.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-standard": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
     "nodemon": "^1.19.1",
     "tsc-watch": "^2.4.0",
-    "tslint": "^5.19.0",
     "typescript": "^3.5.3"
   }
 }
