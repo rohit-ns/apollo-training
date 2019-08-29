@@ -4,6 +4,8 @@ var _express = _interopRequireDefault(require("express"));
 
 var _apolloServerExpress = require("apollo-server-express");
 
+var _http = require("http");
+
 var _config = require("./config");
 
 var _index = _interopRequireDefault(require("./index"));
@@ -18,19 +20,31 @@ const server = new _apolloServerExpress.ApolloServer({
     userApi: new _services.UserAPI(),
     traineeApi: new _services.TraineeAPI()
   }),
-  context: ({
-    req
+  context: async ({
+    req,
+    connection
   }) => {
-    console.log('$$$$$$$$$$$$', req.headers.authorization);
+    if (connection) {
+      // check connection for metadata
+      return connection.context;
+    } // check from req
+
+
+    const token = req.headers.authorization || '';
     return {
-      token: req.headers.authorization
+      token
     };
   }
 });
 const app = (0, _express.default)();
+const httpServer = (0, _http.createServer)(app);
+server.installSubscriptionHandlers(httpServer);
 server.applyMiddleware({
   app
 });
-app.listen({
+httpServer.listen({
   port: _config.configuration.port
-}, () => console.log(`🚀 Server ready at http://localhost:${_config.configuration.port}${server.graphqlPath}`));
+}, () => {
+  console.log(`🚀 Server ready at http://localhost:${_config.configuration.port}${server.graphqlPath}`); // console.log(`🚀 Subscriptions ready at ws://localhost:${configuration.port}${server.subscriptionsPath}`);
+}); // app.listen({ port: configuration.port }, () => console.log(`🚀 Server ready at http://localhost:${configuration.port}${server.graphqlPath}`));
+// app.listen({ port: configuration.port }, () => console.log(`🚀 Subscriptions ready at ws://localhost:${configuration.port}${server.subscriptionsPath}`));
