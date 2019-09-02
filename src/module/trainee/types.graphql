@@ -1,14 +1,15 @@
 
-type result {
-    do:[allTrainee]
-}
 type allTrainee {
-    status: String
     message: String
-    data: [traineeList]
+    status: String
+    data: traineeList
 }
 type traineeList {
-    id: ID
+    count:String
+    records:[list]
+}
+type list{
+    id: String
     createdBy: String
     UpdatedBy: String
     password: String
@@ -24,7 +25,7 @@ input createInput {
 type createTrainee {
     message: String
     status:String
-    data: traineeList
+    data: list
     
 }
 input updateInput{

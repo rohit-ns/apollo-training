@@ -8,7 +8,6 @@ class TraineeAPI extends RESTDataSource {
   }
 
   willSendRequest(request) {
-    // console.log('###############', this.context.token);
     request.headers.set('Authorization', this.context.token);
   }
 

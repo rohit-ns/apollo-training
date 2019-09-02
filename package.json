@@ -25,6 +25,7 @@
   "homepage": "https://github.com/rohit-ns/apollo-training#readme",
   "dependencies": {
     "apollo-datasource-rest": "^0.6.1",
+    "apollo-server-core": "^2.9.3",
     "apollo-server-express": "^2.8.1",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",

@@ -16,7 +16,7 @@ class UserAPI extends _apolloDatasourceRest.RESTDataSource {
   }
 
   willSendRequest(req) {
-    req.headers.set('Authorization', this.context.token); // console.log('token *************', req.header.authorization);
+    req.headers.set('Authorization', this.context.token);
   }
 
   async getMe() {

@@ -5,14 +5,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = void 0;
 
+var _Error = _interopRequireDefault(require("../../lib/Error"));
+
 var _subscription = require("../../subscription");
 
-// eslint-disable-next-line import/named
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 const Mutation = {
   loginUser: async (parent, args, {
     dataSources
   }) => {
-    console.log('>>>>>>>>>>>>', args);
     const {
       input: {
         email,
@@ -20,6 +22,10 @@ const Mutation = {
       }
     } = args;
     const result = await dataSources.userApi.loginUser(email, password);
+
+    if (result.error) {
+      throw new _Error.default(result);
+    }
 
     _subscription.pubsub.publish(_subscription.USER_LOGIN, {
       userLogin: result

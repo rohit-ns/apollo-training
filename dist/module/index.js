@@ -9,8 +9,6 @@ var _user = require("./user");
 
 var _trainee = require("./trainee");
 
-/* eslint-disable object-curly-spacing */
-// eslint-disable-next-line import/named
 const resolvers = {
   Query: { ..._user.UserQuery,
     ..._trainee.TraineeQuery
