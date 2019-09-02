@@ -1,5 +1,17 @@
-
 type Query {
     trainee: [allTrainee]
     me: allUser
 }
+type Mutation {
+    createTrainee(input: createInput):createTrainee
+    updateTrainee(input: updateInput):updateTrainee
+    deleteTrainee(input: deleteInput):deleteTrainee
+    loginUser(input: loginInput):loginUser
+}
+type Subscription {
+    traineeCreate:createTrainee
+    traineeUpdate:updateTrainee
+    traineeDelete:deleteTrainee
+    userLogin:loginUser
+}
+

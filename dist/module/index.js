@@ -10,10 +10,16 @@ var _user = require("./user");
 var _trainee = require("./trainee");
 
 /* eslint-disable object-curly-spacing */
-// console.log('>>>>>>>>>>>>>>>>>', UserQuery, TraineeQuery);
+// eslint-disable-next-line import/named
 const resolvers = {
   Query: { ..._user.UserQuery,
     ..._trainee.TraineeQuery
+  },
+  Mutation: { ..._user.userMutation,
+    ..._trainee.traineeMutation
+  },
+  Subscription: { ..._user.userSubscription,
+    ..._trainee.traineeSubscription
   }
 };
 var _default = resolvers;

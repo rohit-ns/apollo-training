@@ -8,7 +8,7 @@ class TraineeAPI extends RESTDataSource {
   }
 
   willSendRequest(request) {
-    console.log('###############', this.context.token);
+    // console.log('###############', this.context.token);
     request.headers.set('Authorization', this.context.token);
   }
 
@@ -16,15 +16,21 @@ class TraineeAPI extends RESTDataSource {
     const result = await this.get('trainee');
     return result;
   }
-  // async createTrainee(name,email, password) {
-  //    const result= this.post('/trainee', { name,email, password });
-  //    return result;
-  // }
-  // async updateTrainee(id,name,email, password) {
-  //     return this.update('/trainee', { id,name,email, password });
-  // }
-  // async deleteTrainee(id,name,email, password) {
-  //     return this.delete('/trainee/${id}', { id,name,email, password });
-  // }
+
+  async createTrainee(name, email, password) {
+    const result = await this.post('trainee', { name, email, password });
+    return result;
+  }
+
+  async updateTrainee(id, dataToUpdate) {
+    const result = await this.put('trainee', { id, dataToUpdate });
+    return result;
+  }
+
+  async deleteTrainee(id) {
+    // eslint-disable-next-line no-template-curly-in-string
+    const result = await this.delete(`trainee/del/${id}`, { id });
+    return result;
+  }
 }
 export default TraineeAPI;

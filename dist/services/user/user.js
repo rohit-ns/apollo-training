@@ -22,10 +22,16 @@ class UserAPI extends _apolloDatasourceRest.RESTDataSource {
   async getMe() {
     const result = await this.get('user/me');
     return result;
-  } // async login(email, password) {
-  //     return this.post('/user/login', { email, password });
-  // }
+  }
 
+  async loginUser(email, password) {
+    const result = await this.post('user/login', {
+      email,
+      password
+    });
+    console.log('***************', result);
+    return result;
+  }
 
 }
 

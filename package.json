@@ -30,7 +30,8 @@
     "express": "^4.17.1",
     "graphql": "^14.4.2",
     "merge-graphql-schemas": "^1.7.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "ws": "^7.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.5.5",

@@ -9,7 +9,7 @@ const TraineeQuery = {
     dataSources
   }) => {
     const result = await dataSources.traineeApi.getTrainee();
-    console.log('@@@@@@@@@@@@@@@@@@@@', result);
+    console.log('>>>>>>>>', result);
     return result;
   }
 };

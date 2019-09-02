@@ -1,12 +1,20 @@
 /* eslint-disable object-curly-spacing */
-import { UserQuery } from './user';
-import { TraineeQuery } from './trainee';
+// eslint-disable-next-line import/named
+import { UserQuery, userMutation, userSubscription } from './user';
+import { TraineeQuery, traineeMutation, traineeSubscription} from './trainee';
 
-// console.log('>>>>>>>>>>>>>>>>>', UserQuery, TraineeQuery);
 const resolvers = {
   Query: {
     ...UserQuery,
     ...TraineeQuery,
+  },
+  Mutation: {
+    ...userMutation,
+    ...traineeMutation,
+  },
+  Subscription: {
+    ...userSubscription,
+    ...traineeSubscription,
   },
 };
 export default resolvers;

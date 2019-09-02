@@ -18,19 +18,37 @@
 #     email:String
 #     password:Sring
 # }
+type user {
+    name: String
+    _id: ID
+    createdBy: String
+    createdAt: String
+    updatedBy: String
+    updatedAt: String
+    originalID: String
+    email: String
+    role: String
+}
 type allUser {
-   status: String
    message: String
+   status: String
    data: userList
 }
-
-
 type userList {
-   id: ID
-   createdBy: String
-   UpdatedBy: String
-   password: String
+   _id: ID
    email: String
    name: String
    role: String
+   createdBy: String
+   UpdatedBy: String
+
+}
+input loginInput{
+   email:String
+   password:String
+}
+type loginUser{
+   message: String
+   status: String
+   data:String
 }
