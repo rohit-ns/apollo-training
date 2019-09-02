@@ -16,7 +16,6 @@ class TraineeAPI extends _apolloDatasourceRest.RESTDataSource {
   }
 
   willSendRequest(request) {
-    // console.log('###############', this.context.token);
     request.headers.set('Authorization', this.context.token);
   }
 

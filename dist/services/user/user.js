@@ -29,7 +29,6 @@ class UserAPI extends _apolloDatasourceRest.RESTDataSource {
       email,
       password
     });
-    console.log('***************', result);
     return result;
   }
 
