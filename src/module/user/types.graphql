@@ -1,23 +1,4 @@
-# type UserData {
-#     _id:String
-#     name:String
-#     role:String
-#     email:String
-#     originalId:String
-#     createdBy:String
-# }
-# type User {
-#     id:ID
-#     name:String
-#     email:String
-#     password:String
-# }
-# type LoginResponse {
-#     id:ID
-#     name:String
-#     email:String
-#     password:Sring
-# }
+
 type user {
     name: String
     _id: ID
@@ -31,7 +12,7 @@ type user {
 }
 type allUser {
    message: String
-   status: String
+   status:String
    data: userList
 }
 type userList {

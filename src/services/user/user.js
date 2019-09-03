@@ -9,7 +9,6 @@ class UserAPI extends RESTDataSource {
 
   willSendRequest(req) {
     req.headers.set('Authorization', this.context.token);
-    // console.log('token *************', req.header.authorization);
   }
 
   async getMe() {
@@ -19,7 +18,6 @@ class UserAPI extends RESTDataSource {
 
   async loginUser(email, password) {
     const result = await this.post('user/login', { email, password });
-    console.log('***************', result);
     return result;
   }
 }
