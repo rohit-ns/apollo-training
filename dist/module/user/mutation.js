@@ -15,23 +15,27 @@ const Mutation = {
   loginUser: async (parent, args, {
     dataSources
   }) => {
-    const {
-      input: {
-        email,
-        password
+    try {
+      const {
+        input: {
+          email,
+          password
+        }
+      } = args;
+      const result = await dataSources.userApi.loginUser(email, password);
+
+      if (result.error) {
+        throw new _Error.default(result);
       }
-    } = args;
-    const result = await dataSources.userApi.loginUser(email, password);
 
-    if (result.error) {
-      throw new _Error.default(result);
+      _subscription.pubsub.publish(_subscription.USER_LOGIN, {
+        userLogin: result
+      });
+
+      return result;
+    } catch (error) {
+      return error;
     }
-
-    _subscription.pubsub.publish(_subscription.USER_LOGIN, {
-      userLogin: result
-    });
-
-    return result;
   }
 };
 var _default = Mutation;

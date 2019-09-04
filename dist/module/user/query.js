@@ -13,13 +13,17 @@ const UserQuery = {
   me: async (parent, args, {
     dataSources
   }) => {
-    const result = await dataSources.userApi.getMe();
+    try {
+      const result = await dataSources.userApi.getMe();
 
-    if (result.error) {
-      throw new _Error.default(result);
+      if (result.error) {
+        throw new _Error.default(result);
+      }
+
+      return result;
+    } catch (error) {
+      return error;
     }
-
-    return result;
   }
 };
 var _default = UserQuery;

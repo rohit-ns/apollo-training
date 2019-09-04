@@ -15,65 +15,79 @@ const Mutation = {
   createTrainee: async (parent, args, {
     dataSources
   }) => {
-    const {
-      input: {
-        email,
-        password,
-        name
+    try {
+      const {
+        input: {
+          email,
+          password,
+          name
+        }
+      } = args;
+      const result = await dataSources.traineeApi.createTrainee(name, email, password);
+      console.log('***********', result);
+      console.log('^^^^^^^^^', result.error);
+
+      if (result.error) {
+        throw new _Error.default(result);
       }
-    } = args;
-    const result = await dataSources.traineeApi.createTrainee(name, email, password);
 
-    if (result.error) {
-      throw new _Error.default(result);
+      _subscription.pubsub.publish(_subscription.TRAINEE_CREATE, {
+        traineeCreate: result
+      });
+
+      return result;
+    } catch (error) {
+      return error;
     }
-
-    _subscription.pubsub.publish(_subscription.TRAINEE_CREATE, {
-      traineeCreate: result
-    });
-
-    return result;
   },
   updateTrainee: async (parent, args, {
     dataSources
   }) => {
-    const {
-      input: {
-        id,
-        dataToUpdate
+    try {
+      const {
+        input: {
+          id,
+          dataToUpdate
+        }
+      } = args;
+      const result = await dataSources.traineeApi.updateTrainee(id, dataToUpdate);
+
+      if (result.error) {
+        throw new _Error.default(result);
       }
-    } = args;
-    const result = await dataSources.traineeApi.updateTrainee(id, dataToUpdate);
 
-    if (result.error) {
-      throw new _Error.default(result);
+      _subscription.pubsub.publish(_subscription.TRAINEE_UPDATE, {
+        traineeUpdate: result
+      });
+
+      return result;
+    } catch (error) {
+      return error;
     }
-
-    _subscription.pubsub.publish(_subscription.TRAINEE_UPDATE, {
-      traineeUpdate: result
-    });
-
-    return result;
   },
   deleteTrainee: async (parent, args, {
     dataSources
   }) => {
-    const {
-      input: {
-        id
+    try {
+      const {
+        input: {
+          id
+        }
+      } = args;
+      const result = await dataSources.traineeApi.deleteTrainee(id);
+
+      if (result.error) {
+        throw new _Error.default(result);
       }
-    } = args;
-    const result = await dataSources.traineeApi.deleteTrainee(id);
 
-    if (result.error) {
-      throw new _Error.default(result);
+      _subscription.pubsub.publish(_subscription.TRAINEE_DELETE, {
+        traineeDelete: result
+      });
+
+      return result;
+    } catch (error) {
+      return error;
     }
-
-    _subscription.pubsub.publish(_subscription.TRAINEE_DELETE, {
-      traineeDelete: result
-    });
-
-    return result;
   }
 };
 var _default = Mutation;

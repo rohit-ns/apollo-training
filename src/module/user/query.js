@@ -2,11 +2,15 @@ import Error from '../../lib/Error';
 
 const UserQuery = {
   me: async (parent, args, { dataSources }) => {
-    const result = await dataSources.userApi.getMe();
-    if (result.error) {
-      throw new Error(result);
+    try {
+      const result = await dataSources.userApi.getMe();
+      if (result.error) {
+        throw new Error(result);
+      }
+      return result;
+    } catch (error) {
+      return error;
     }
-    return result;
   },
 };
 export default UserQuery;
