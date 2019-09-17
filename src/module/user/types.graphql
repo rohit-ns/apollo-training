@@ -6,7 +6,7 @@ type user {
     createdAt: String
     updatedBy: String
     updatedAt: String
-    originalID: String
+    originalId: String
     email: String
     role: String
 }

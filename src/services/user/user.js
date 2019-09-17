@@ -1,10 +1,10 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
-import { configuration } from '../../config';
+import { config } from '../../config';
 
 class UserAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = configuration.SERVICE_URL;
+    this.baseURL = config.SERVICE_URL;
   }
 
   willSendRequest(req) {

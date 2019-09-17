@@ -1,10 +1,10 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
-import { configuration } from '../../config';
+import { config } from '../../config';
 
 class TraineeAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = configuration.SERVICE_URL;
+    this.baseURL = config.SERVICE_URL;
   }
 
   willSendRequest(request) {
@@ -17,6 +17,7 @@ class TraineeAPI extends RESTDataSource {
   }
 
   async createTrainee(name, email, password) {
+    
     const result = await this.post('trainee', { name, email, password });
     return result;
   }
@@ -28,7 +29,7 @@ class TraineeAPI extends RESTDataSource {
 
   async deleteTrainee(id) {
     // eslint-disable-next-line no-template-curly-in-string
-    const result = await this.delete(`trainee/del/${id}`, { id });
+    const result = await this.delete(`trainee/${id}`, { id });
     return result;
   }
 }

@@ -1,4 +1,3 @@
-
 type allTrainee {
     message: String
     status: String
@@ -9,9 +8,10 @@ type traineeList {
     records:[list]
 }
 type list{
-    id: String
+    _id: String
     createdBy: String
     UpdatedBy: String
+    originalId:String
     password: String
     email: String
     name: String
@@ -25,8 +25,18 @@ input createInput {
 type createTrainee {
     message: String
     status:String
-    data: list
+    data: list1
     
+}
+type list1{
+    id: String
+    createdBy: String
+    UpdatedBy: String
+    originalId:String
+    password: String
+    email: String
+    name: String
+    role: String
 }
 input updateInput{
     id: String
